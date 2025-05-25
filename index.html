@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JK Serviços de Tecnologia - Painel de Chamados</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="logo.png" alt="JK Serviços de Tecnologia Logo" id="logo">
+            <h1>JK Serviços de Tecnologia</h1>
+            <h2>Painel de Chamados</h2>
+        </header>
+
+        <div class="form-container">
+            <h3>Novo Chamado</h3>
+            <form id="ticketForm">
+                <div class="form-group">
+                    <label for="clientName">Nome do Cliente:</label>
+                    <input type="text" id="clientName" name="clientName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="clientAddress">Endereço:</label>
+                    <input type="text" id="clientAddress" name="clientAddress" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ticketType">Tipo de Chamado:</label>
+                    <select id="ticketType" name="ticketType" required>
+                        <option value="">Selecione...</option>
+                        <option value="compra">Compra</option>
+                        <option value="conserto">Conserto</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ticketDescription">Descrição do Problema/Solicitação:</label>
+                    <textarea id="ticketDescription" name="ticketDescription" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="fileUpload">Anexar Arquivo (opcional):</label>
+                    <input type="file" id="fileUpload" name="fileUpload">
+                </div>
+
+                <button type="submit" class="submit-btn">Abrir Chamado</button>
+            </form>
+        </div>
+
+        <div class="tickets-display-container">
+            <h3>Chamados Abertos</h3>
+            <div class="search-container">
+                <label for="searchTicketId">Pesquisar por ID do Chamado:</label>
+                <input type="text" id="searchTicketId" placeholder="Digite o ID...">
+                <button id="clearSearchBtn" class="clear-search-btn" style="display:none;">Limpar</button>
+            </div>
+            <div id="ticketsList">
+                <p>Nenhum chamado aberto no momento.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="manageTicketModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModalBtn">&times;</span>
+            <h3 id="modalTicketTitle">Gerenciar Chamado #<span id="modalTicketIdDisplay"></span></h3>
+            <div id="modalTicketDetails">
+                <p><strong>Cliente:</strong> <span id="modalClientName"></span></p>
+                <p><strong>Endereço:</strong> <span id="modalClientAddress"></span></p>
+                <p><strong>Tipo:</strong> <span id="modalTicketType"></span></p>
+                <p><strong>Descrição:</strong> <span id="modalTicketDescription"></span></p>
+                <p><strong>Arquivo:</strong> <span id="modalFileName"></span> <span id="modalFileSize"></span></p>
+                <p><strong>Data de Abertura:</strong> <span id="modalCreatedAt"></span></p>
+            </div>
+            <div class="modal-form-group">
+                <label for="modalTicketStatus">Status do Chamado:</label>
+                <select id="modalTicketStatus">
+                    <!-- Options will be populated by JS -->
+                </select>
+            </div>
+            <p class="modal-backend-note">
+                <strong>Nota:</strong> A gestão completa de arquivos e histórico detalhado requer integração com um sistema de backend.
+                Esta interface simula a funcionalidade localmente.
+            </p>
+            <button id="saveModalChangesBtn" class="submit-btn">Salvar Alterações</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
